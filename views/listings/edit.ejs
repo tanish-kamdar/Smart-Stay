@@ -1,0 +1,31 @@
+<% layout('layouts/boilerplate.ejs')%>
+<body>
+    <h3 style="text-align: center; margin: 1rem 0;">Edit listing</h3>
+    <form method="post" action="/listings/<%= listing._id %>?_method=PUT" enctype="multipart/form-data">
+        <div class="row">
+        <div class="container edit-form col-8 offset-2" >
+            <label for="title" class="form-label mt-3">Title</label>
+            <input type="text" name="listing[title]" class="form-control " value="<%=listing.title %>" required>
+            <label for="description" class="form-label">Description</label>
+            <textarea name="listing[description]" rows="4" cols="60" class="form-control " required><%=listing.description %></textarea>
+            <p>Original Image</p>
+            <img src="<%=originalUrl%>"><br>
+            <label for="image" class="form-label">Upload Image</label>
+            <input type="file" name="listing[image]"  class="form-control " id="image" >
+            <div class="row">
+                <div class="price col-sm-4">
+                    <label for="price" class="form-label">Price per night</label>
+                    <input type="number" name="listing[price]"  class="form-control" value="<%=listing.price %>" required>
+                </div>
+                <div class="country col-sm-8">
+                    <label for="country" class="form-label">Country</label>
+                    <input type="text" name="listing[country]"  class="form-control" value="<%=listing.country %>" required>
+                </div>
+            </div>
+            <label for="location" class="form-label ">Location</label>
+            <input type="text" name="listing[location]"  class="form-control" value="<%=listing.location %>"required>
+            <button class="btn btn-primary post-btn mt-3 mb-3">Update</button>
+        </div>
+    </div>
+    </form>
+</body>

@@ -1,0 +1,77 @@
+<% layout('layouts/boilerplate.ejs')%>
+<script>
+  let coordinates=<%- JSON.stringify(listing.geometry.coordinates) %>
+</script>
+<body>
+    <div class="row">
+    <div class="show-box col-10 offset-1">
+    <h3 class="mt-3"><%= listing.title %></h3>
+
+    <img src="<%= listing.image.url%>" alt="<%= listing.title %>" class="show-img">
+        <p class="mt-3">Owned by : <i><%= listing.owner.username%></i></p>
+        <p class="mt-3"><%=listing.description%></p>
+        <p>&#8377; <%=listing.price.toLocaleString('en-IN')%>/night</p>
+        <p><%=listing.location%></p>
+        <p><%=listing.country%></p>
+
+    <% if(currUser && currUser._id.equals(listing.owner._id)){%>
+    <a href="/listings/<%= listing._id %>/edit"><button class="btn btn-primary edit-btn">Edit Listing</button></body></a>
+    <form method="post" action="/listings/<%=listing._id%>?_method=DELETE" class="del-form ms-3 mb-3">
+        <button class="btn btn-primary del-btn">Delete Listing</button>
+    </form>
+    <%} %>
+
+    <hr>
+    <form method="post" action="/listings/<%=listing._id%>/reviews" class="needs-validation" novalidate>
+        <h4 class="mt-3 mb-3">Leave a Review</h4>
+        <label class="form-label mt-3">Rating</label>
+
+        <!-- Rating Widget -->
+        <fieldset class="starability-grow">
+            <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
+            <input type="radio" id="first-rate1" name="review[rating]" value="1"/>
+            <label for="first-rate1" title="Terrible">1 star</label>
+            <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+            <label for="first-rate2" title="Not good">2 stars</label>
+            <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+            <label for="first-rate3" title="Average">3 stars</label>
+            <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+            <label for="first-rate4" title="Very good">4 stars</label>
+            <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+            <label for="first-rate5" title="Amazing">5 stars</label>
+          </fieldset>
+
+
+        <p class="invalid-feedback">Providing a rating is mandatory</p>
+        <label class="form-label mt-3">Comment</label>
+        <textarea name="review[comment]" id="" class="form-control mb-3" required></textarea>
+        <p class="invalid-feedback">Providing a comment is mandatory</p>
+        <button class="btn btn-outline-dark mt-3 mb-3">Post Review</button>
+    </form>
+    <hr>
+    <%if(listing.reviews.length){%>
+    <h4>All Reviews</h4>
+    <div class="row">
+        <% for(review of listing.reviews) {%>
+            <div class="card  col-5 m-1 review-card" >
+                <div class="card-body">
+                  <h5 class="card-title"><%= review.author.username %></h5>
+                  <p class="starability-result" data-rating="<%=review.rating%>"></p>
+                  <p class="card-text"><%= review.comment%></p>
+                  <%if(currUser && currUser._id.equals(review.author._id)) {%>
+                  <form method="post" action="/listings/<%=listing._id %>/reviews/<%= review._id%>?_method=DELETE">
+                    <button class="btn btn-outline-dark">Delete</button>
+                  </form>
+                  <%} %>
+                </div>
+              </div>
+        <% } %>
+    </div>
+    <%}%>
+    <h4>Where You'll Be</h4>
+    <div id="map"></div>
+
+</div>
+</div>
+<script src="/js/map.js"></script>
+</body>

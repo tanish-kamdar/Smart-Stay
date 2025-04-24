@@ -1,0 +1,110 @@
+.navbar{
+    height : 80px;
+    width: 100%;
+    margin:0;
+    padding: 0;
+    background-color: white;
+}
+.nav-link{
+    color: #222222;
+}
+.fa-compass{
+    font-size: 2rem;
+    margin-right: 1rem;
+    color :#fe424d;
+}
+body{
+    background-color: white;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-optical-sizing: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.main-content{
+    flex:1;
+}
+.footer{
+    text-align: center;
+    color:#222222;
+    background-color: #ebebeb;
+}
+.f-social a{
+    color:#222222;
+    margin :0 0.75rem;
+    font-size: 1.5rem;
+}
+.footer a{
+    text-decoration: none;
+    
+}
+.f-links a {
+    margin : 0 0.75rem;
+    color:#222222;
+}
+.f-links a:hover {
+    text-decoration: underline;
+}
+.listing-row{
+    width: 98%;
+    margin-left: 1rem;
+}
+.listing-card{
+    border: 0;
+    width :20rem;
+    padding: 0;
+}
+.card-img-top{
+    border-radius: 1rem;
+    object-fit: cover !important;
+    padding: 0;
+    width: 100% !important;
+    height:20rem;
+}
+.card-text,.card-body{
+    padding: 0 !important;
+    margin : 0.5rem 0;
+}
+.listing-link{
+    text-decoration: none;
+    padding: 0;
+}
+.card-img-overlay:hover{
+    opacity: 0.25;
+    background-color: white;
+}
+.form-control,.form-label{
+    margin:0.25rem;
+}
+.form-control{
+    border-color: gray;
+}
+.post-btn,.del-btn,.edit-btn{
+    background-color: #fe424d;
+    border: none;
+}
+.post-btn:hover{
+    background-color: #fe424d;
+
+}
+.del-form .del-btn,.edit-btn:hover{
+
+    background-color: #fe424d;
+}
+.show-img{
+    height: 30vh;
+    width:100%;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+.del-form{
+    display: inline-block;
+}
+button{
+    background-color: #fe424d;
+    border:none;
+}
+#map {
+    height : 400px;
+    width :100%;
+}

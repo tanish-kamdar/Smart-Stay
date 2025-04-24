@@ -1,0 +1,32 @@
+<% layout('layouts/boilerplate.ejs')%>
+<body>
+    <h3 style="text-align: center; margin: 1rem 0;">Create a new listing</h3>
+    <form method="post" action="/listings" class="needs-validation" enctype="multipart/form-data" novalidate>
+        <div class="row">
+        <div class="container add-form col-8 offset-2" >
+            <label for="title" class="form-label mt-3">Title</label>
+            <input type="text" name="listing[title]" class="form-control " required>
+            <label for="description" class="form-label">Description</label>
+            <textarea name="listing[description]" rows="4" cols="60" class="form-control " required></textarea>
+            <!-- <label for="image" class="form-label">Image URL</label>
+            <input type="text" name="listing[image]"  class="form-control " > -->
+
+            <input type="file" name="listing[image]" class="form-control mt-3 mb-3" required>
+
+            <div class="row">
+                <div class="price col-sm-4">
+                    <label for="price" class="form-label">Price per night</label>
+                    <input type="number" name="listing[price]"  class="form-control" required>
+                </div>
+                <div class="country col-sm-8">
+                    <label for="country" class="form-label">Country</label>
+                    <input type="text" name="listing[country]"  class="form-control" required>
+                </div>
+            </div>
+            <label for="location" class="form-label ">Location</label>
+            <input type="text" name="listing[location]"  class="form-control" required>
+            <button class="btn btn-primary post-btn mt-3 mb-3">Post</button>
+    </div>
+</div>
+    </form>
+</body>
