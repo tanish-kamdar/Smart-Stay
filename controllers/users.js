@@ -11,7 +11,7 @@ module.exports.addUser=async (req,res)=>{
     req.login(newUser,(err)=>{
         if(err) next(err);
 
-    req.flash('success',`Welcome to Wanderlust, ${req.body.username}`);
+    req.flash('success',`Welcome to SmartStay, ${req.body.username}`);
     res.redirect('/listings');
     });
     
@@ -26,7 +26,7 @@ module.exports.getLoginForm=(req,res)=>{
 }
 
 module.exports.login=async (req,res)=>{
-    req.flash('success',`Welcome to Wanderlust, ${req.body.username}`);
+    req.flash('success',`Welcome to SmartStay, ${req.body.username}`);
     let redirectUrl=res.locals.redirectUrl || '/listings';
     res.redirect(redirectUrl);
 }
