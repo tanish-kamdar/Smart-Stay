@@ -108,3 +108,10 @@ button{
     height : 400px;
     width :100%;
 }
+.logo{
+    text-decoration: none;
+    color :#fe424d;
+    font-weight: 900;
+    font-size: 2rem;
+    margin-right: 2rem;
+}
