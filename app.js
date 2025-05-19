@@ -1,9 +1,10 @@
 const express=require('express');
 const app=express();
+require('dotenv').config();
 const path=require('path');
 const methodOverride=require('method-override');
 const mongoose=require('mongoose');
-const port=8080;
+const port=process.env.PORT;
 const ejsMate=require('ejs-mate');
 const ExpressError=require('./utils/ExpressError.js');
 const reviews=require('./routes/reviews.js');
@@ -15,7 +16,7 @@ const listingController=require('./controllers/listings.js');
 const multer=require('multer');
 const upload=multer({dest : 'uploads/'});
 
-require('dotenv').config();
+
 
 const session=require('express-session');
 const MongoStore=require('connect-mongo');
