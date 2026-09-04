@@ -20,7 +20,7 @@ jobs:
 
       - name: Install Project Dependencies
         run: npm install
-        
+        env: npm_config_legacy_peer_deps: true
         
       - name: Start App and Connect
         env:
