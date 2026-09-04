@@ -39,8 +39,8 @@ sessionOptions={
     secret : process.env.SECRET,
     resave : false,
     saveUninitialized : true,
-    cookies : {
-        expires : Date.now() + 7*24*60*60*1000,
+    cookie : {
+        
         maxAge : 7*24*60*60*1000,
         httpOnly : true
     }
@@ -96,13 +96,13 @@ app.use('/listings/:id/reviews',reviews);
 app.use('/user',user);
 
 app.all('*',(req,res,next)=>{
-    throw new ExpressError(404,'Page Does\'t Exist');
+    next(new ExpressError(404,'Page Does\'t Exist'));
 });
+
 
 app.use((err,req,res,next)=>{
     let {status=500 , message="Something Went Wrong!"}=err;
     res.status(status).render('error.ejs',{err,status});
-    console.log(err.stack);
 });
 
 app.listen(port,()=>{
